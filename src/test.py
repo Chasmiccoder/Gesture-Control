@@ -2,6 +2,7 @@
 To test if OpenCV and Mediapipe have been installed correctly
 When you show your hand to the camera, you should be able to see the 21 hand landmarks
 """
+
 import cv2
 import mediapipe as mp
 

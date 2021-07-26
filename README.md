@@ -26,8 +26,10 @@ Install the required packages
 
     pip install -r requirements.txt
 
-Run the program
+If you are using VSCode, configure settings.json as follows
 
-    python src/main.py
+    {
+        "python.pythonPath": ".\\venv\\Scripts\\python"
+    }
 
 

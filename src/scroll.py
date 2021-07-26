@@ -19,7 +19,6 @@ capture = cv2.VideoCapture(0)
 while True:
 
     success, img = capture.read()
-
     lmlist, img = detector.lmlist(img, True)
 
     if lmlist:
@@ -33,13 +32,10 @@ while True:
 
     cv2.imshow("Video Feed:",img)
 
-
     key = cv2.waitKey(1)
-
 
     if key == 27: # escape
         break
-
 
 capture.release()
 cv2.destroyAllWindows()
