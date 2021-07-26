@@ -21,7 +21,8 @@ class HandDetector():
                 for id,lm in enumerate(handlms.landmark):
                     height, width, channels = img.shape
 
-                    cx, cy = int(lm.x * width), int( lm.y * height )
+                    # Current x and y coordinates
+                    cx, cy = int( lm.x * width ), int( lm.y * height )
 
                     lmlist.append([id,cx,cy])
 
@@ -32,10 +33,16 @@ class HandDetector():
 
 
     def fingerUp(self,img,lmlist, draw = True):
+        """
+        Returns a list of 5 elements. First finger is the thumb
+        If 1, the finger is up. If it is 0, the finger is down 'has been clenched'
+        Works for Right Hand (because of how the right thumb folds)
+        """
         fingers = []
         tipIds = [8,12,16,20]
         count = 0
 
+        # For the thumbs
         if lmlist[4][1] > lmlist[3][1]:
             count += 1
             fingers.append(1)
@@ -54,4 +61,12 @@ class HandDetector():
             cv2.putText(img, str(count), (50,50), cv2.FONT_HERSHEY_PLAIN, 3, (255,0,0), 3)
 
         return fingers
+
+
+    def findDistance(self, p1, p2, img, lmlist,draw=False ):
+        x1,y1 = lmlist[p1][1:]
+        x2,y2 = lmlist[p2][1:]
+
+
+
 

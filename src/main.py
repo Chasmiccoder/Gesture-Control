@@ -4,6 +4,14 @@
 
 Execute:
 .\venv\Scripts\activate.ps1 
+
+
+With pyautogui, 
+Use something like
+pyautogui.press('esc')
+To press key combination: Alt + Tab
+to implement Hand swipe for changing the window / app
+
 """
 
 import cv2

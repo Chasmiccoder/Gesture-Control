@@ -31,7 +31,7 @@ while True:
 
 
     cv2.imshow("Video Feed:",img)
-
+  
     key = cv2.waitKey(1)
 
     if key == 27: # escape
