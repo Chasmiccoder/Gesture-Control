@@ -5,6 +5,13 @@
 Execute:
 .\venv\Scripts\activate.ps1 
 
+write note on how coordinates work in opencv
+
+For volume control add condition
+if fingers[-3:] == [0,0,0]:
+    then do volume control (we want volume control when only the thumb and index are up, and the rest
+    of the fingers have been clenched)
+
 
 With pyautogui, 
 Use something like
@@ -31,7 +38,7 @@ while True:
     lmlist, img = detector.lmlist(img, True)
 
     if lmlist:
-        fingers = detector.fingerUp(img,lmlist,True)
+        fingers, img = detector.fingerUp(img,lmlist,True)
 
         if fingers == [0,0,0,0,0]:
             pyautogui.scroll(-50)

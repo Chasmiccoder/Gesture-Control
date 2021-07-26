@@ -22,7 +22,7 @@ while True:
     lmlist, img = detector.lmlist(img, True)
 
     if lmlist:
-        fingers = detector.fingerUp(img,lmlist,True)
+        fingers, img = detector.fingerUp(img,lmlist,True)
 
         if fingers == [0,0,0,0,0]:
             pyautogui.scroll(-50)

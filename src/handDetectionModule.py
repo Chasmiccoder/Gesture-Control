@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+import math
 
 mpHands = mp.solutions.hands
 
@@ -10,7 +11,7 @@ drawTools = mp.solutions.drawing_utils
 class HandDetector():
     # returns the landmark list and image object
     # The landmark list is a list of 5 integers. 1 if the finger is up, and 0 if it is down
-    def lmlist(self,img, draw=True):
+    def lmlist(self,img, draw=False):
         lmlist = []
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         results = hands.process(imgRGB)
@@ -32,7 +33,7 @@ class HandDetector():
         return lmlist, img
 
 
-    def fingerUp(self,img,lmlist, draw = True):
+    def fingerUp(self,img,lmlist, draw = False):
         """
         Returns a list of 5 elements. First finger is the thumb
         If 1, the finger is up. If it is 0, the finger is down 'has been clenched'
@@ -60,12 +61,28 @@ class HandDetector():
         if draw:
             cv2.putText(img, str(count), (50,50), cv2.FONT_HERSHEY_PLAIN, 3, (255,0,0), 3)
 
-        return fingers
+        return fingers, img
 
 
     def findDistance(self, p1, p2, img, lmlist,draw=False ):
         x1,y1 = lmlist[p1][1:]
         x2,y2 = lmlist[p2][1:]
+
+        length = math.hypot(x2-x1, y2-y1) # Euclidean distance
+
+        if draw:                             # BGR
+            cv2.line(img, (x1,y1),(x2,y2), (255,0,255), 3 )
+            cv2.circle(img, (x1,y1),5,(255,0,0), cv2.FILLED)
+            cv2.circle(img, (x2,y2),5,(255,0,0), cv2.FILLED)
+
+
+        return length
+
+
+
+
+
+    # Create is_left_hand function
 
 
 
