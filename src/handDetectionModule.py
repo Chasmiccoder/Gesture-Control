@@ -76,7 +76,7 @@ class HandDetector():
             cv2.circle(img, (x2,y2),5,(255,0,0), cv2.FILLED)
 
 
-        return length
+        return length, img
 
 
 

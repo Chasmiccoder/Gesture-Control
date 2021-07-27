@@ -13,6 +13,8 @@ if fingers[-3:] == [0,0,0]:
     of the fingers have been clenched)
 
 
+implement drag and drop
+
 With pyautogui, 
 Use something like
 pyautogui.press('esc')

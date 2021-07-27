@@ -2,6 +2,10 @@
 Awesome OpenCV + Mediapipe project to change the volume/screen brightness, scroll, and control the mouse pointer - all with gestures!
 
 <br>
+Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for the basics!
+<br>
+
+<br>
 <br>
 
 ### <u>Installation</u>
