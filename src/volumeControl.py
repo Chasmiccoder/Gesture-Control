@@ -1,61 +1,41 @@
 """
-Use getmaster volume function and put some threshold for change (4 levels for example),
-to make the volume control smooth
+Control Volume with your fingers!
 
-from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
-devices = AudioUtilities.GetSpeakers()
-interface = devices.Activate(
-    IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
-volume = cast(interface, POINTER(IAudioEndpointVolume))
-volume.GetMute()
-volume.GetMasterVolumeLevel()
-volume.GetVolumeRange()
-volume.SetMasterVolumeLevel(-20.0, None)
+Works for the right hand. Clench all your fingers except for your index finger and thumb.
+Change the distance between the tip of the index and the thumb to change the volume
+
+If you're using the 
+volume.SetMasterVolumeLevel() method,
+then note that the range depends on the range of the speakers / audio device
+For normal laptop speakers the range is from -65.25 to 0.00
+By using volume.SetMasterVolumeLevelScalar() we can directly work within the range 0.0 and 1.0
 
 """
 
 import cv2
 import mediapipe as mp
-from handDetectionModule import HandDetector
 import numpy as np
 
 from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL, IID
+from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
+from handDetectionModule import HandDetector
 
 detector = HandDetector()
 
 mpHands = mp.solutions.hands
 hands = mpHands.Hands()
-drawTools = mp.solutions.drawing_utils
 
-# If 0 doesn't work, try 1 (to choose the webcam)
 capture = cv2.VideoCapture(0)
 
 devices = AudioUtilities.GetSpeakers()
 interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
 volume = cast(interface, POINTER(IAudioEndpointVolume))
 
-volRange = volume.GetVolumeRange() 
-print( "Volume Range: ", volRange ) # (-65.25, 0.0, 0.03125) Changes depending on audio device
-# In this case, -65.25 corresponds to 0 and 0.0 corresponds to 100 in our system
-
-minVol = volRange[0]
-maxVol = volRange[1]
-
-# Distance between thumb and index ranges from 30 to 200. *
-# For normal laptop speakers, the volume levels range from -65.25 to 0 **
-# We need to convert the distance obtained * into this scale **
-
-
 while True:
     success, img = capture.read()
-
     lmlist, img = detector.lmlist(img)
-
 
     if lmlist:
 
@@ -64,45 +44,33 @@ while True:
         # Volume control works only when index, thumb are 'up' and when the other 3 fingers are clenched
         if fingers[-3:] == [0,0,0]:
 
-            length = detector.findDistance(4,8,img,lmlist,draw=True) # We want point 8 (tip of the index) and 4 (tip of the thumb)
-            # print(length)
+            # Taking the distance between landmarks 8 (tip of the index) and 4 (tip of the thumb)
+            length, img = detector.findDistance(4,8,img,lmlist,draw=True)
+            
+            # The distance between the fingers ranges from 30 to 200
+            new_vol = np.interp(length, (30,200), (0,1))
+            
+            currentVolume = volume.GetMasterVolumeLevelScalar()
 
-            new_vol = np.interp(length, (30,200), (minVol,maxVol) )
+            # For a volume change to be valid there should be at least 10% difference. Done to retain smooth functioning
+            threshold = 0.1
+            
+            volume_percent = np.interp(currentVolume, (0,1), (0,100) )
+            volume_bar = np.interp(currentVolume, (0,1), (0,200))
 
-            volume_percent = np.interp(length, (30,200), (0,100) )
-
-            volume_bar = np.interp(length, (30,200), (270,120))
-
+            # Visual Volume Bar
             cv2.putText(img,str(int(volume_percent))+"%", (50,100), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0), 3)
-            
-            cv2.rectangle(img,(50,120),(80,270), (255,0,0), 3) # Starting coordinate at 50,120. 
-            # Ending coordinate (diagonally opp) at 80,270
+            cv2.rectangle(img,(50,120),(80,320), (255,0,0), 3)
+            cv2.rectangle(img,(50,320-int(volume_bar)),(80,320), (255,0,0), cv2.FILLED)
 
-            cv2.rectangle(img,(50,int(volume_bar)),(80,270), (255,0,0), cv2.FILLED)
-
-            
-
-
-            volume.SetMasterVolumeLevel(new_vol, None)
-
-
-
-    
+            # If the difference between the new volume and the old one is greater than the threshold, then change the volume
+            if abs(currentVolume - new_vol) >= threshold:
+                volume.SetMasterVolumeLevelScalar(new_vol, None)
 
 
     cv2.imshow("Video Feed", img)
-
-    key = cv2.waitKey(1)
-
-    if key == 27:
+    if cv2.waitKey(1) == 27: # escape button
         break
-
 
 capture.release()
 cv2.destroyAllWindows()
-
-
-
-
-
-

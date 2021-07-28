@@ -2,7 +2,7 @@
 Awesome OpenCV + Mediapipe project to change the volume/screen brightness, scroll, and control the mouse pointer - all with gestures!
 
 <br>
-Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for the basics!
+Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for the foundation!
 <br>
 
 <br>
@@ -37,3 +37,12 @@ If you are using VSCode, configure settings.json as follows
     }
 
 
+
+### <u>Common Issues</u>
+
+(Create separate file for this section) <br>
+Webcam <br>
+If the webcam doesn't work, pass 1 instead of 0 in the lines using cv2.VideoCapture()
+as follows:
+    
+    capture = cv2.VideoCapture(1)
