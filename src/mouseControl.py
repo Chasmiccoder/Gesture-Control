@@ -64,8 +64,8 @@ while True:
             # cv2.rectangle(img,(frameR,frameR), (540,380), (255,0,255),3)
             
 
-            relative_factor_x = 150
-            relative_factor_y = 150            
+            relative_factor_x = 40
+            relative_factor_y = 40            
 
 
             # cv2.rectangle(img,(frameR_x,frameR_y), (frameR_x + frame_width,frameR_y + frame_height), (255,0,255),3)
@@ -85,7 +85,21 @@ while True:
             index_groove_x, index_groove_y = lmlist[7][1:]
             # While left clicking, point 8 goes below 7 and 6, so while that is happening, don't move the mouse
             
+            if x1 >= top_left_x + NMZ_width and x1 <= frameR_x + frame_width:
+                pyautogui.move(-relative_factor_x, 0) # move mouse to the left
+            
+            elif x1 <= top_left_x and x1 >= frameR_x:
+                pyautogui.move(relative_factor_x, 0)  # move mouse to the right
 
+            elif y1 <= top_left_y and y1 >= frameR_y:
+                pyautogui.move(0, -relative_factor_y)  # move mouse downwards
+                
+            
+            elif y1 <= frameR_y + frame_height and y1 >= top_left_y + NMZ_height:
+                pyautogui.move(0, relative_factor_y)  # move mouse upwards
+                
+            
+        
 
 
             """
@@ -136,7 +150,7 @@ while True:
             #     print("LEFT CLICK!")
         
         if fingers == [1,1,0,0,0]:
-            # pyautogui.click()
+            pyautogui.click()
             print("LEFT CLICK!")
 
     cv2.imshow("Video Feed",img)
