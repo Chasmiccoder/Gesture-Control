@@ -21,6 +21,10 @@ pyautogui.press('esc')
 To press key combination: Alt + Tab
 to implement Hand swipe for changing the window / app
 
+
+Convert to python app,
+release it as a single .exe for ez usage
+
 """
 
 import cv2
