@@ -6,6 +6,16 @@ Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for t
 <br>
 
 <br>
+
+### <u>Usage + Features!</u>
+
+* Scroll with Right Hand
+* Brightness Control with Left Hand
+* Volume Control with Right Hand
+* Mouse Control with Right Hand
+
+
+<br>
 <br>
 
 ### <u>Installation</u>
@@ -41,8 +51,12 @@ If you are using VSCode, configure settings.json as follows
 ### <u>Common Issues</u>
 
 (Create separate file for this section) <br>
-Webcam <br>
+1) Webcam <br>
 If the webcam doesn't work, pass 1 instead of 0 in the lines using cv2.VideoCapture()
 as follows:
     
     capture = cv2.VideoCapture(1)
+
+<br>
+
+2) Mediapipe's Left Hand / Right Hand Classifier is not always accurate, which might lead to some incoherence

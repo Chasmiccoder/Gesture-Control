@@ -83,6 +83,31 @@ class HandDetector():
 
 
     # Create is_left_hand function
+    def isLeftHand(self, img):
+        """
+        First returned variable returns False if a hand is not detected, and True if
+        a hand is detected.
+        The second returned variable returns True if the hand is a Left hand
+        and False if it is a Right hand
+        """
+
+        flipped_image = cv2.flip(img, 1)
+        orientation_results = hands.process(cv2.cvtColor(flipped_image, cv2.COLOR_BGR2RGB))
+
+        handType = orientation_results.multi_handedness
+        whichHand = None
+
+        if handType:
+            whichHand = handType[0].classification[0].label
+            if whichHand == "Left":
+                return True, True
+            else:
+                return True, False
+
+        else:
+            return False, False
+        
+        
 
 
 

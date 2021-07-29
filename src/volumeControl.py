@@ -37,7 +37,9 @@ while True:
     success, img = capture.read()
     lmlist, img = detector.lmlist(img)
 
-    if lmlist:
+    handIsThere, is_left_hand = detector.isLeftHand(img)
+
+    if lmlist and handIsThere == True and is_left_hand == False:
 
         fingers, img = detector.fingerUp(img,lmlist)
 
