@@ -190,7 +190,7 @@ class GestureRecog():
             x1,y1 = landmarks[8][1:]
             
             relative_x = 40
-            relative_y = 40            
+            relative_y = 30            
             
             # Better control if the boundaries are visible
             if draw:

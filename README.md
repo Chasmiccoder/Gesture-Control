@@ -18,11 +18,25 @@ It is recommended that you run main.py directly from src, because the executable
 
 ### <u>Features</u>
 
-* Scroll with Right Hand
-* Brightness Control with Left Hand
-* Volume Control with Right Hand
 * Mouse Control with Right Hand
 
+![Mouse Control Gif](./images/mouse-control.gif)
+
+* Scroll with Right Hand
+
+![Scroll Gif](./images/scroll-control.gif)
+
+* Brightness Control with Left Hand
+
+![Brightness Control Gif](./images/brightness-control.gif)
+
+* Volume Control with Right Hand
+
+![Volume Control Gif](./images/volume-control.gif)
+
+* Alt + Tab Simulation with Left Hand
+
+![Alt + Tab Gif](./images/alt-tab-control.gif)
 
 <br>
 <br>
@@ -94,7 +108,8 @@ First install auto-py-to-exe with
     pip install auto-py-to-exe
 
 
-If the compilation gives a enum related error, uninstall auto-py-to-exe, then enum34 and reinstall the former
+If you get the error - module enum has no attribute IntFlag,
+uninstall auto-py-to-exe, then enum34 and reinstall the former
 
     pip uninstall auto-py-to-exe
     pip uninstall enum34
