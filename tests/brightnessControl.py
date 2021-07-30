@@ -5,8 +5,6 @@ import numpy as np
 from handDetectionModule import HandDetector
 import screen_brightness_control
 
-currentBrightness = screen_brightness_control.get_brightness()
-
 detector = HandDetector()
 
 mpHands = mp.solutions.hands

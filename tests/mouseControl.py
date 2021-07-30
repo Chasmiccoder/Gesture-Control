@@ -1,4 +1,3 @@
-from platform import release
 import cv2
 import mediapipe as mp
 from handDetectionModule import HandDetector
@@ -82,7 +81,7 @@ while True:
             cv2.circle(img,(x1,y1),10, (255,0,255), cv2.FILLED)
 
 
-
+            #NOT USED
             index_tip_x,index_tip_y = lmlist[8][1:]
             index_groove_x, index_groove_y = lmlist[7][1:]
             # While left clicking, point 8 goes below 7 and 6, so while that is happening, don't move the mouse
@@ -156,7 +155,6 @@ while True:
             print("LEFT CLICK!")
 
     cv2.imshow("Video Feed",img)
-    # cv2.resizeWindow("Video Feed", 640, 480)
 
     key = cv2.waitKey(1)
     if key == 27:
