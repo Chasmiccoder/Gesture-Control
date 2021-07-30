@@ -8,7 +8,13 @@ Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for t
 
 <br>
 
-### <u>Usage + Features!</u>
+### <u>Usage</u>
+
+To download the Application <a href="#">Click Here</a> 
+<br>
+Run the project.exe file (iron man logo), and you're good to go :)
+
+### <u>Features</u>
 
 * Scroll with Right Hand
 * Brightness Control with Left Hand
@@ -19,7 +25,7 @@ Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for t
 <br>
 <br>
 
-### <u>Installation</u>
+### <u>Installation (For Developers)</u>
 
 For Windows - (Tested with Python 3.9.5)
 
@@ -52,7 +58,8 @@ If you are using VSCode, configure settings.json as follows
 
 ### <u>Common Issues</u>
 
-(Create separate file for this section) <br>
+(Create separate file for this section) 
+<br>
 1) Webcam <br>
 If the webcam doesn't work, pass 1 instead of 0 in the lines using cv2.VideoCapture()
 as follows:
@@ -65,6 +72,8 @@ as follows:
 
 
 
+
+
 Docs:
 
 Check out -
@@ -74,5 +83,41 @@ tests folder contains the old programs
 
 src contains the main file with the GestureRecognition module
 
+
+
+### <u>Compiling the Application</u>
+
+First install auto-py-to-exe with
+
+    pip install auto-py-to-exe
+
+
+If the compilation gives a enum related error, uninstall auto-py-to-exe, then enum34 and reinstall the former
+
+    pip uninstall auto-py-to-exe
+    pip uninstall enum34
+    pip install auto-py-to-exe
+
+Now run auto-py-to-exe with
+
+    pip install auto-py-to-exe.exe
+
+Merge the code into a single file called project.py
+Locate project.py in auto-py-to-exe
+In the settings, choose
+* One Directory
+* Window Based (hide the console)
+
+Choose the icon from the images folder (or use your own!)
+
+In the 'Advanced Menu', go to paths, and paste the path to your Scripts folder present in venv
+
+
+<b>Note!</b>
+<br>
+After compilation copy files from "venv\Lib\site-packages\mediapipe" 
+into "output\mediapipe" present in the created project folder
+<br>
+This needs to be done because Mediapipe's files do not get automatically added.
 
 
