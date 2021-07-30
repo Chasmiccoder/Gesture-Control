@@ -2,8 +2,9 @@
 Awesome OpenCV + Mediapipe project to change the volume/screen brightness, scroll, and control the mouse pointer - all with gestures!
 
 <br>
-Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for the foundation!
+Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for the <a href="https://www.youtube.com/watch?v=SlqHa2R9RYg">foundation!</a>
 <br>
+
 
 <br>
 
@@ -32,9 +33,10 @@ Create a virtual environment with the name venv
 
     virtualenv venv
 
-Activate the created virtual environment
+Activate the created virtual environment (use one of the two commands)
 
     .\venv\Scripts\activate.bat
+    .\venv\Scripts\activate.ps1
 
 Install the required packages
 
@@ -60,3 +62,17 @@ as follows:
 <br>
 
 2) Mediapipe's Left Hand / Right Hand Classifier is not always accurate, which might lead to some incoherence
+
+
+
+Docs:
+
+Check out -
+https://google.github.io/mediapipe/solutions/hands.html
+
+tests folder contains the old programs
+
+src contains the main file with the GestureRecognition module
+
+
+
