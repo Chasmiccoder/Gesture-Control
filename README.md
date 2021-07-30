@@ -13,6 +13,8 @@ Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for t
 To download the Application <a href="#">Click Here</a> 
 <br>
 Run the project.exe file (iron man logo), and you're good to go :)
+<br>
+It is recommended that you run main.py directly from src, because the executable's performance is notably slow.
 
 ### <u>Features</u>
 
@@ -85,7 +87,7 @@ src contains the main file with the GestureRecognition module
 
 
 
-### <u>Compiling the Application</u>
+### <u>Compiling the Application (into an .exe file)</u>
 
 First install auto-py-to-exe with
 
