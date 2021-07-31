@@ -16,25 +16,35 @@ Run the project.exe file (iron man logo), and you're good to go :)
 <br>
 It is recommended that you run main.py directly from src, because the executable's performance is notably slow.
 
+<br>
+
 ### <u>Features</u>
 
-* Mouse Control with Right Hand
+* <b>Mouse Control with Right Hand</b>
 
 ![Mouse Control Gif](./images/mouse-control.gif)
 
-* Scroll with Right Hand
+<br>
+
+* <b>Scroll with Right Hand</b>
 
 ![Scroll Gif](./images/scroll-control.gif)
 
-* Brightness Control with Left Hand
+<br>
+
+* <b>Brightness Control with Left Hand</b>
 
 ![Brightness Control Gif](./images/brightness-control.gif)
 
-* Volume Control with Right Hand
+<br>
+
+* <b>Volume Control with Right Hand</b>
 
 ![Volume Control Gif](./images/volume-control.gif)
 
-* Alt + Tab Simulation with Left Hand
+<br>
+
+* <b>Alt + Tab Simulation with Left Hand</b>
 
 ![Alt + Tab Gif](./images/alt-tab-control.gif)
 
@@ -70,7 +80,7 @@ If you are using VSCode, configure settings.json as follows
         "python.pythonPath": ".\\venv\\Scripts\\python"
     }
 
-
+<br>
 
 ### <u>Common Issues</u>
 
@@ -86,20 +96,7 @@ as follows:
 
 2) Mediapipe's Left Hand / Right Hand Classifier is not always accurate, which might lead to some incoherence
 
-
-
-
-
-Docs:
-
-Check out -
-https://google.github.io/mediapipe/solutions/hands.html
-
-tests folder contains the old programs
-
-src contains the main file with the GestureRecognition module
-
-
+<br>
 
 ### <u>Compiling the Application (into an .exe file)</u>
 
@@ -137,4 +134,9 @@ into "output\mediapipe" present in the created project folder
 <br>
 This needs to be done because Mediapipe's files do not get automatically added.
 
+<br>
+
+### <u>Resources</u>
+
+* https://google.github.io/mediapipe/solutions/hands.html
 
