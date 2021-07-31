@@ -10,7 +10,7 @@ Special thanks to <a href="https://github.com/vinamrak">Vinamra</a> bhaiya for t
 
 ### <u>Usage</u>
 
-To download the Application <a href="#">Click Here</a> 
+To download the Application <a href="https://github.com/Chasmiccoder/Gesture-Control/releases/download/v1.0/Gesture-Control-Application.zip">Click Here</a> 
 <br>
 Run the project.exe file (iron man logo), and you're good to go :)
 <br>
